@@ -28,12 +28,13 @@ while(cap.isOpened()):
 
         basic_processing = Ind_Frame_Processing(frame)
         key_points = basic_processing.orbKeyPointDetection()
+
 #TODO: we can't use drawKeypoints for another couple days due to errors
 #        new_frame = cv2.drawKeypoints(frame,kp,color=(0,255,0), flags=0)
         for marker in key_points:
         	frame = cv2.drawMarker(frame, tuple(int(i) for i in marker.pt), color=(0, 255, 0))
         cv2.imshow('frame',frame)
-        cv2.waitKey(50) #this is to slow down each frame
+        cv2.waitKey(1) #this is to slow down each frame
     else:
         cv2.destroyAllWindows()
         cap.release()
