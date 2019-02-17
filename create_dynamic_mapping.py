@@ -22,10 +22,13 @@ cap = cv2.VideoCapture(args.source)
 
 while(cap.isOpened()):
     ret, frame = cap.read()
-    if frame is not None:
+    if ret == True:
         frame = cv2.resize(frame,(480,360))
         cv2.imshow('frame',frame)
         cv2.waitKey(1)
+    else:
+        cv2.destroyAllWindows()
+        cap.release()
 
 
 #d = Display(480,360)
