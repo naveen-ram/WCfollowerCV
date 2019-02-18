@@ -4,6 +4,7 @@ import scipy
 import _pickle as pickle
 import random
 import os
+import time
 #import matplotlib.pyplot as plt
 
 
@@ -17,7 +18,13 @@ class Ind_Frame_Processing():
 
     #TODO: Current ORB detection method is still not great because it is very innacurate. Gotta use a better one.
     def orbKeyPointDetection(self):
-        orb = cv2.ORB_create(edgeThreshold=2,WTA_K=3,scoreType=2)
+        orb = cv2.ORB_create()
         kp = orb.detect(self.frame,None)
         #kp, des = orb.compute(self.frame, kp)
+        return kp
+
+    def FASTKeyPointDetection(self):
+        gray = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
+        FAST = cv2.FastFeatureDetector_create()
+        kp = FAST.detect(gray,None)
         return kp

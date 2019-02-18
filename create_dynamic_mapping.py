@@ -27,7 +27,7 @@ while(cap.isOpened()):
         frame = cv2.resize(frame,(480,360))
 
         basic_processing = Ind_Frame_Processing(frame)
-        key_points = basic_processing.orbKeyPointDetection()
+        key_points = basic_processing.FASTKeyPointDetection()
 
 #TODO: we can't use drawKeypoints for another couple days due to errors
 #        new_frame = cv2.drawKeypoints(frame,kp,color=(0,255,0), flags=0)
