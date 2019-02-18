@@ -5,7 +5,7 @@
 python3 create_dynamic_mapping.py "link/to/video"
 ```
 ## libraries
-  opencv-python
-  numpy
-  scipy
-  _pickle
+  * opencv-python
+  * numpy
+  * scipy
+  * pickle
