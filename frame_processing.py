@@ -27,5 +27,6 @@ class Ind_Frame_Processing():
 #        gray = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
         FAST = cv2.FastFeatureDetector_create()
         kp = FAST.detect(self.frame,None)
-        dsp = FAST.compute(self.frame,kp)
+        orb = cv2.ORB_create()
+        dsp = orb.compute(self.frame,kp)
         return kp,dsp

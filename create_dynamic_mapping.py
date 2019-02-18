@@ -25,7 +25,6 @@ while(cap.isOpened()):
     if ret == True:
         #frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         frame = cv2.resize(frame,(480,360))
-
         basic_processing = Ind_Frame_Processing(frame)
         key_points, descriptors = basic_processing.FASTKeyPointDetection()
 
