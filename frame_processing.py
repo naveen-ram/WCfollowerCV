@@ -24,7 +24,8 @@ class Ind_Frame_Processing():
         return kp
 
     def FASTKeyPointDetection(self):
-        gray = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
+#        gray = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
         FAST = cv2.FastFeatureDetector_create()
-        kp = FAST.detect(gray,None)
-        return kp
+        kp = FAST.detect(self.frame,None)
+        dsp = FAST.compute(self.frame,kp)
+        return kp,dsp
