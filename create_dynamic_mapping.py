@@ -25,7 +25,9 @@ thisdict =	{
   "keyPoint": (0,0,255),
   "fMatch": (0,255,0)
 }
-
+counter = 0
+prev_key_points = None
+prev_descriptors = None
 while(cap.isOpened()):
     ret, frame = cap.read()
     if ret == True:
@@ -33,7 +35,8 @@ while(cap.isOpened()):
         frame = cv2.resize(frame,(480,360))
         basic_processing = Ind_Frame_Processing(frame)
         key_points1, descriptors1 = basic_processing.FASTKeyPointDetection()
-
+        #if counter > 0:
+            #print("Hello")
 #        if cap.grab():
 #        ret2, frame2 = cap.retrieve()
 #        if ret2 == True:
@@ -53,7 +56,10 @@ while(cap.isOpened()):
 
         cv2.imshow('frame',frame)
 #        cv2.imshow('points',blank_frame)
-        cv2.waitKey(50) #this is to slow down each frame
+        cv2.waitKey(1) #this is to slow down each frame
+        prev_key_points = key_points1
+        old_descriptors = descriptors1
+        counter = counter + 1
     else:
         cv2.destroyAllWindows()
         cap.release()
